@@ -1,0 +1,860 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    <!-- Start book django项目 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>多对多案例分析 | django项目</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="../db/migrate.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="7.6"
+        data-chapter-title="多对多案例分析"
+        data-filepath="db/many.md"
+        data-basepath=".."
+        data-revision="Wed Nov 06 2019 11:37:23 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        课程简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="intro.html">
+            
+                
+                    <a href="../intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Flask介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="project.html">
+            
+                
+                    <a href="../project.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        工程搭建
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="project/env.html">
+            
+                
+                    <a href="../project/env.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        环境安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="project/helloworld.html">
+            
+                
+                    <a href="../project/helloworld.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        HelloWorld程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="project/config.html">
+            
+                
+                    <a href="../project/config.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        相关配置参数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="project/run.html">
+            
+                
+                    <a href="../project/run.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        服务器启动方式
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="router.html">
+            
+                
+                    <a href="../router.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        路由与蓝图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="router/router.html">
+            
+                
+                    <a href="../router/router.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        路由
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="router/blueprint.html">
+            
+                
+                    <a href="../router/blueprint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        蓝图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="requestresponse.html">
+            
+                
+                    <a href="../requestresponse.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        请求与响应
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="requestresponse/request.html">
+            
+                
+                    <a href="../requestresponse/request.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="requestresponse/response.html">
+            
+                
+                    <a href="../requestresponse/response.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        响应
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="requestresponse/status.html">
+            
+                
+                    <a href="../requestresponse/status.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Cookie与Session
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="requestresponse/status/cookie.html">
+            
+                
+                    <a href="../requestresponse/status/cookie.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.1.</b>
+                        
+                        cookie
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="requestresponse/status/session.html">
+            
+                
+                    <a href="../requestresponse/status/session.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.2.</b>
+                        
+                        session
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="hook.html">
+            
+                
+                    <a href="../hook.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        请求钩子与上下文
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="hook/exception.html">
+            
+                
+                    <a href="../hook/exception.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        异常处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="hook/hook.html">
+            
+                
+                    <a href="../hook/hook.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        请求钩子
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="hook/context.html">
+            
+                
+                    <a href="../hook/context.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        上下文
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="restful.html">
+            
+                
+                    <a href="../restful.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Flask-RESTful
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="restful/helloworld.html">
+            
+                
+                    <a href="../restful/helloworld.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        快速入门
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="restful/view.html">
+            
+                
+                    <a href="../restful/view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="restful/request.html">
+            
+                
+                    <a href="../restful/request.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="restful/response.html">
+            
+                
+                    <a href="../restful/response.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        响应
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="db.html">
+            
+                
+                    <a href="../db.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        数据库
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="db/sqlalchemy.html">
+            
+                
+                    <a href="../db/sqlalchemy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        SQLAlchemy安装及设置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="db/field.html">
+            
+                
+                    <a href="../db/field.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        定义模型类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="db/operation.html">
+            
+                
+                    <a href="../db/operation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        数据库基本操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="db/relationship.html">
+            
+                
+                    <a href="../db/relationship.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        关联查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="db/migrate.html">
+            
+                
+                    <a href="../db/migrate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        数据库迁移
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="7.6" data-path="db/many.html">
+            
+                
+                    <a href="../db/many.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        多对多案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >django项目</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x591A;&#x5BF9;&#x591A;&#x6848;&#x4F8B;&#x5206;&#x6790;">&#x591A;&#x5BF9;&#x591A;&#x6848;&#x4F8B;&#x5206;&#x6790; </h1>
+<p><a href="http://flask-sqlalchemy.pocoo.org/2.3/models/#many-to-many-relationships" target="_blank">&#x6587;&#x6863;</a></p>
+<p>&#x5728;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F1A;&#x9047;&#x5230;&#x5F88;&#x591A;&#x6570;&#x636E;&#x4E4B;&#x95F4;&#x591A;&#x5BF9;&#x591A;&#x5173;&#x7CFB;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<ul>
+<li>&#x5B66;&#x751F;&#x7F51;&#x4E0A;&#x9009;&#x8BFE;(&#x5B66;&#x751F;&#x548C;&#x8BFE;&#x7A0B;)</li>
+<li>&#x8001;&#x5E08;&#x4E0E;&#x5176;&#x6388;&#x8BFE;&#x7684;&#x73ED;&#x7EA7;(&#x8001;&#x5E08;&#x548C;&#x73ED;&#x7EA7;)</li>
+<li>&#x7528;&#x6237;&#x4E0E;&#x5176;&#x6536;&#x85CF;&#x7684;&#x65B0;&#x95FB;(&#x7528;&#x6237;&#x548C;&#x65B0;&#x95FB;)</li>
+<li>&#x7B49;&#x7B49;...</li>
+</ul>
+<p>&#x6240;&#x4EE5;&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x4F7F;&#x7528; ORM &#x6A21;&#x578B;&#x5C06;&#x8868;&#x4E0E;&#x8868;&#x7684;&#x591A;&#x5BF9;&#x591A;&#x5173;&#x8054;&#x5173;&#x7CFB;&#x4F7F;&#x7528;&#x4EE3;&#x7801;&#x63CF;&#x8FF0;&#x51FA;&#x6765;&#x3002;&#x591A;&#x5BF9;&#x591A;&#x5173;&#x7CFB;&#x63CF;&#x8FF0;&#x6709;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x7684;&#x70B9;&#x5C31;&#x662F;&#xFF1A;<strong>&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x5F20;&#x5355;&#x72EC;&#x7684;&#x8868;&#x53BB;&#x8BB0;&#x5F55;&#x4E24;&#x5F20;&#x8868;&#x4E4B;&#x95F4;&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;</strong></p>
+<h2 id="&#x573A;&#x666F;&#x793A;&#x4F8B;">&#x573A;&#x666F;&#x793A;&#x4F8B; </h2>
+<h3 id="&#x9700;&#x6C42;&#x5206;&#x6790;">&#x9700;&#x6C42;&#x5206;&#x6790; </h3>
+<ul>
+<li>&#x5B66;&#x751F;&#x53EF;&#x4EE5;&#x7F51;&#x4E0A;&#x9009;&#x8BFE;&#xFF0C;&#x5B66;&#x751F;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x8BFE;&#x7A0B;&#x4E5F;&#x6709;&#x591A;&#x4E2A;</li>
+<li>&#x5B66;&#x751F;&#x6709;&#xFF1A;&#x5F20;&#x4E09;&#x3001;&#x674E;&#x56DB;&#x3001;&#x738B;&#x4E94;</li>
+<li>&#x8BFE;&#x7A0B;&#x6709;&#xFF1A;&#x7269;&#x7406;&#x3001;&#x5316;&#x5B66;&#x3001;&#x751F;&#x7269;</li>
+<li>&#x9009;&#x4FEE;&#x5173;&#x7CFB;&#x6709;&#xFF1A;<ul>
+<li>&#x5F20;&#x4E09;&#x9009;&#x4FEE;&#x4E86;&#x5316;&#x5B66;&#x548C;&#x751F;&#x7269;</li>
+<li>&#x674E;&#x56DB;&#x9009;&#x4FEE;&#x4E86;&#x5316;&#x5B66;</li>
+<li>&#x738B;&#x4E94;&#x9009;&#x4FEE;&#x4E86;&#x7269;&#x7406;&#x3001;&#x5316;&#x5B66;&#x548C;&#x751F;&#x7269;</li>
+</ul>
+</li>
+<li>&#x9700;&#x6C42;&#xFF1A;<ol>
+<li>&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x5B66;&#x751F;&#x9009;&#x4FEE;&#x4E86;&#x54EA;&#x4E9B;&#x8BFE;&#x7A0B;</li>
+<li>&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x8BFE;&#x7A0B;&#x90FD;&#x6709;&#x54EA;&#x4E9B;&#x5B66;&#x751F;&#x9009;&#x62E9;</li>
+</ol>
+</li>
+</ul>
+<h3 id="&#x601D;&#x8DEF;&#x5206;&#x6790;">&#x601D;&#x8DEF;&#x5206;&#x6790; </h3>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5206;&#x6790;&#x5F97;&#x51FA;<ul>
+<li>&#x7528;&#x4E00;&#x5F20;&#x8868;&#x6765;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x5B66;&#x751F;&#x6570;&#x636E;</li>
+<li>&#x7528;&#x4E00;&#x5F20;&#x8868;&#x6765;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x8BFE;&#x7A0B;&#x6570;&#x636E;</li>
+</ul>
+</li>
+<li>&#x5177;&#x4F53;&#x8868;&#x53CA;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<h5 id="&#x5B66;&#x751F;&#x8868;student">&#x5B66;&#x751F;&#x8868;(Student) </h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x4E3B;&#x952E;(id)</th>
+<th style="text-align:left">&#x5B66;&#x751F;&#x540D;(name)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">&#x5F20;&#x4E09;</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">&#x674E;&#x56DB;</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">&#x738B;&#x4E94;</td>
+</tr>
+</tbody>
+</table>
+<h5 id="&#x9009;&#x4FEE;&#x8BFE;&#x8868;course">&#x9009;&#x4FEE;&#x8BFE;&#x8868;(Course) </h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x4E3B;&#x952E;(id)</th>
+<th style="text-align:left">&#x8BFE;&#x7A0B;&#x540D;(name)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">&#x7269;&#x7406;</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">&#x5316;&#x5B66;</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">&#x751F;&#x7269;</td>
+</tr>
+</tbody>
+</table>
+<h5 id="&#x6570;&#x636E;&#x5173;&#x8054;&#x5173;&#x7CFB;&#x8868;studentcourse">&#x6570;&#x636E;&#x5173;&#x8054;&#x5173;&#x7CFB;&#x8868;(Student_Course) </h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x4E3B;&#x952E;(student.id)</th>
+<th style="text-align:left">&#x4E3B;&#x952E;(course.id)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x7ED3;&#x679C;">&#x7ED3;&#x679C; </h3>
+<ul>
+<li><p>&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x5B66;&#x751F;&#x9009;&#x4FEE;&#x4E86;&#x54EA;&#x4E9B;&#x8BFE;&#x7A0B;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x67E5;&#x8BE2;&#x738B;&#x4E94;&#x9009;&#x4FEE;&#x4E86;&#x54EA;&#x4E9B;&#x8BFE;&#x7A0B;</p>
+<ul>
+<li>&#x53D6;&#x51FA;&#x738B;&#x4E94;&#x7684; id &#x53BB; Student_Course &#x8868;&#x4E2D;&#x67E5;&#x8BE2; student.id &#x503C;&#x4E3A; 3 &#x7684;&#x6240;&#x6709;&#x6570;&#x636E;</li>
+<li>&#x67E5;&#x8BE2;&#x51FA;&#x6765;&#x6709;3&#x6761;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8FD9;3&#x6761;&#x6570;&#x636E;&#x91CC;&#x9762;&#x7684; course.id &#x53D6;&#x503C;&#x5E76;&#x67E5;&#x8BE2; Course &#x8868;&#x5373;&#x53EF;&#x83B7;&#x5F97;&#x7ED3;&#x679C;</li>
+</ul>
+</li>
+<li><p>&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x8BFE;&#x7A0B;&#x90FD;&#x6709;&#x54EA;&#x4E9B;&#x5B66;&#x751F;&#x9009;&#x62E9;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x67E5;&#x8BE2;&#x751F;&#x7269;&#x8BFE;&#x7A0B;&#x90FD;&#x6709;&#x54EA;&#x4E9B;&#x5B66;&#x751F;&#x9009;&#x4FEE;</p>
+<ul>
+<li>&#x53D6;&#x51FA;&#x751F;&#x7269;&#x8BFE;&#x7A0B;&#x7684; id &#x53BB; Student_Course &#x8868;&#x4E2D;&#x67E5;&#x8BE2; course.id &#x503C;&#x4E3A; 3 &#x7684;&#x6240;&#x6709;&#x6570;&#x636E;</li>
+<li>&#x67E5;&#x8BE2;&#x51FA;&#x6765;&#x6709;2&#x6761;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8FD9;2&#x6761;&#x6570;&#x636E;&#x91CC;&#x9762;&#x7684; student.id &#x53D6;&#x503C;&#x5E76;&#x67E5;&#x8BE2; Student &#x8868;&#x5373;&#x53EF;&#x83B7;&#x5F97;&#x7ED3;&#x679C;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x4EE3;&#x7801;&#x6F14;&#x7EC3;">&#x4EE3;&#x7801;&#x6F14;&#x7EC3; </h2>
+<ul>
+<li>&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x53CA;&#x8868;</li>
+</ul>
+<pre><code>tb_student_course = db.Table(&apos;tb_student_course&apos;,
+                             db.Column(&apos;student_id&apos;, db.Integer, db.ForeignKey(&apos;students.id&apos;)),
+                             db.Column(&apos;course_id&apos;, db.Integer, db.ForeignKey(&apos;courses.id&apos;))
+                             )
+
+
+class Student(db.Model):
+    __tablename__ = &quot;students&quot;
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+
+    courses = db.relationship(&apos;Course&apos;, secondary=tb_student_course,
+                              backref=&apos;student&apos;,
+                              lazy=&apos;dynamic&apos;)
+
+
+class Course(db.Model):
+    __tablename__ = &quot;courses&quot;
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+</code></pre><ul>
+<li>&#x6DFB;&#x52A0;&#x6D4B;&#x8BD5;&#x6570;&#x636E;</li>
+</ul>
+<pre><code>if __name__ == &apos;__main__&apos;:
+    db.drop_all()
+    db.create_all()
+
+    # &#x6DFB;&#x52A0;&#x6D4B;&#x8BD5;&#x6570;&#x636E;
+
+    stu1 = Student(name=&apos;&#x5F20;&#x4E09;&apos;)
+    stu2 = Student(name=&apos;&#x674E;&#x56DB;&apos;)
+    stu3 = Student(name=&apos;&#x738B;&#x4E94;&apos;)
+
+    cou1 = Course(name=&apos;&#x7269;&#x7406;&apos;)
+    cou2 = Course(name=&apos;&#x5316;&#x5B66;&apos;)
+    cou3 = Course(name=&apos;&#x751F;&#x7269;&apos;)
+
+    stu1.courses = [cou2, cou3]
+    stu2.courses = [cou2]
+    stu3.courses = [cou1, cou2, cou3]
+
+    db.session.add_all([stu1, stu2, stu3])
+    db.session.add_all([cou1, cou2, cou3])
+
+    db.session.commit()
+
+    app.run(debug=True)
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../db/migrate.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 数据库迁移"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontsettings":{"family":"sans","size":2,"theme":"white"},"toggle-chapters":{},"splitter":{},"emphasize":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book django项目 -->
+</html>

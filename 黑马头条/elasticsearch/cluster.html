@@ -1,0 +1,1614 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    <!-- Start book django项目 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Elasticsearch 集群（cluster） | django项目</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../elasticsearch/indexandtype.html" />
+    
+    
+    <link rel="prev" href="../elasticsearch/intro.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="10.2"
+        data-chapter-title="Elasticsearch 集群（cluster）"
+        data-filepath="elasticsearch/cluster.md"
+        data-basepath=".."
+        data-revision="Wed Nov 06 2019 11:38:31 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="intro.html">
+            
+                
+                    <a href="../intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        项目介绍
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="intro/virtual.html">
+            
+                
+                    <a href="../intro/virtual.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        ToutiaoWeb虚拟机使用说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="intro/remote.html">
+            
+                
+                    <a href="../intro/remote.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Pycharm远程开发
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="intro/flow.html">
+            
+                
+                    <a href="../intro/flow.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        产品与开发
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="intro/dir.html">
+            
+                
+                    <a href="../intro/dir.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        头条项目目录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="intro/debug.html">
+            
+                
+                    <a href="../intro/debug.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        调试方法
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="database.html">
+            
+                
+                    <a href="../database.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        数据库
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="database/design.html">
+            
+                
+                    <a href="../database/design.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        数据库设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="database/design/field.html">
+            
+                
+                    <a href="../database/design/field.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        字段类型的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="database/design/index.html">
+            
+                
+                    <a href="../database/design/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="database/design/engine.html">
+            
+                
+                    <a href="../database/design/engine.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.3.</b>
+                        
+                        数据库存储引擎
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="database/orm.html">
+            
+                
+                    <a href="../database/orm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        理解ORM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="database/principle.html">
+            
+                
+                    <a href="../database/principle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        数据库理论
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="database/principle/online.html">
+            
+                
+                    <a href="../database/principle/online.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.1.</b>
+                        
+                        MySQL主从
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="database/principle/sharding.html">
+            
+                
+                    <a href="../database/principle/sharding.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.</b>
+                        
+                        分库分表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="database/principle/shardingon-toutiao.html">
+            
+                
+                    <a href="../database/principle/shardingon-toutiao.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.</b>
+                        
+                        黑马头条项目应用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="database/distributeid.html">
+            
+                
+                    <a href="../database/distributeid.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        分布式ID
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="database/optimize.html">
+            
+                
+                    <a href="../database/optimize.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        数据库优化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="database/redis.html">
+            
+                
+                    <a href="../database/redis.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        Redis
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="database/redis/redistransication.html">
+            
+                
+                    <a href="../database/redis/redistransication.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.1.</b>
+                        
+                        Redis事务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="database/redis/redisstorage.html">
+            
+                
+                    <a href="../database/redis/redisstorage.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.2.</b>
+                        
+                        Redis存储
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.3" data-path="database/redis/rediscluster.html">
+            
+                
+                    <a href="../database/redis/rediscluster.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.3.</b>
+                        
+                        Redis集群
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="gitflow.html">
+            
+                
+                    <a href="../gitflow.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Git工作流
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="gitflow/flowintro.html">
+            
+                
+                    <a href="../gitflow/flowintro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        工作流简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="gitflow/git.html">
+            
+                
+                    <a href="../gitflow/git.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Git总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="jwt.html">
+            
+                
+                    <a href="../jwt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        JWT
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="jwt/jwtjws-jwe.html">
+            
+                
+                    <a href="../jwt/jwtjws-jwe.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        JWT &amp; JWS &amp; JWE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="jwt/pyjwt.html">
+            
+                
+                    <a href="../jwt/pyjwt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        JWT的Python库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="jwt/implement.html">
+            
+                
+                    <a href="../jwt/implement.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        JWT项目实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="jwt/forbbiden.html">
+            
+                
+                    <a href="../jwt/forbbiden.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        JWT禁用问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="storage.html">
+            
+                
+                    <a href="../storage.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        对象存储
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="storage/qiniu.html">
+            
+                
+                    <a href="../storage/qiniu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        七牛云存储
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="storage/cdn.html">
+            
+                
+                    <a href="../storage/cdn.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        CDN
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="cache.html">
+            
+                
+                    <a href="../cache.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        缓存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="cache/architecture.html">
+            
+                
+                    <a href="../cache/architecture.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        缓存架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="cache/data.html">
+            
+                
+                    <a href="../cache/data.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        缓存数据的类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="cache/ttl.html">
+            
+                
+                    <a href="../cache/ttl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        缓存有效期与淘汰策略
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="cache/mode.html">
+            
+                
+                    <a href="../cache/mode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        缓存模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="cache/problems.html">
+            
+                
+                    <a href="../cache/problems.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        缓存问题
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.1" data-path="cache/problems/redisnull.html">
+            
+                
+                    <a href="../cache/problems/redisnull.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.1.</b>
+                        
+                        缓存穿透
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.2" data-path="cache/problems/redismany.html">
+            
+                
+                    <a href="../cache/problems/redismany.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.2.</b>
+                        
+                        缓存雪崩
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="cache/design.html">
+            
+                
+                    <a href="../cache/design.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        项目缓存与存储设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="cache/implement.html">
+            
+                
+                    <a href="../cache/implement.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        头条项目缓存实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="cache/storage.html">
+            
+                
+                    <a href="../cache/storage.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.</b>
+                        
+                        项目Redis持久存储实现
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="apscheduler.html">
+            
+                
+                    <a href="../apscheduler.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        定时任务
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="apscheduler/use.html">
+            
+                
+                    <a href="../apscheduler/use.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        APScheduler使用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="apscheduler/use/scheduler.html">
+            
+                
+                    <a href="../apscheduler/use/scheduler.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.1.</b>
+                        
+                        调度器\(Scheduler\)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="apscheduler/use/executor.html">
+            
+                
+                    <a href="../apscheduler/use/executor.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.2.</b>
+                        
+                        执行器\(executors\)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="apscheduler/use/jobstores.html">
+            
+                
+                    <a href="../apscheduler/use/jobstores.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.3.</b>
+                        
+                        存储\(job stores\)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="apscheduler/use/trigger.html">
+            
+                
+                    <a href="../apscheduler/use/trigger.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.4.</b>
+                        
+                        触发（triggers）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.5" data-path="apscheduler/use/operation.html">
+            
+                
+                    <a href="../apscheduler/use/operation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.5.</b>
+                        
+                        任务操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="apscheduler/updatecount.html">
+            
+                
+                    <a href="../apscheduler/updatecount.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        定时修正统计数据
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="rpc.html">
+            
+                
+                    <a href="../rpc.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        RPC远程过程调用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="rpc/intro.html">
+            
+                
+                    <a href="../rpc/intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        RPC简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="rpc/grpc.html">
+            
+                
+                    <a href="../rpc/grpc.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        gRPC
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="rpc/protocolbuffer.html">
+            
+                
+                    <a href="../rpc/protocolbuffer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        Protocol Buffers
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="rpc/interface.html">
+            
+                
+                    <a href="../rpc/interface.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        推荐系统接口定义
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="rpc/service.html">
+            
+                
+                    <a href="../rpc/service.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        服务端
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="rpc/client.html">
+            
+                
+                    <a href="../rpc/client.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        客户端
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="rpc/implement.html">
+            
+                
+                    <a href="../rpc/implement.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        头条首页新闻推荐接口编写
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="im.html">
+            
+                
+                    <a href="../im.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        IM即时通讯
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="im/intro.html">
+            
+                
+                    <a href="../im/intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        即时通讯简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="im/websocket.html">
+            
+                
+                    <a href="../im/websocket.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        WebSocket
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="im/socketio.html">
+            
+                
+                    <a href="../im/socketio.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        SocketIO
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" data-path="im/socketio/client.html">
+            
+                
+                    <a href="../im/socketio/client.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.1.</b>
+                        
+                        客户端
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" data-path="im/socketio/server.html">
+            
+                
+                    <a href="../im/socketio/server.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.2.</b>
+                        
+                        服务器
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="im/chat.html">
+            
+                
+                    <a href="../im/chat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        头条聊天服务实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="im/push.html">
+            
+                
+                    <a href="../im/push.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        头条在线消息推送实现
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="elasticsearch.html">
+            
+                
+                    <a href="../elasticsearch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Elasticsearch
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="elasticsearch/intro.html">
+            
+                
+                    <a href="../elasticsearch/intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        简介与原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="10.2" data-path="elasticsearch/cluster.html">
+            
+                
+                    <a href="../elasticsearch/cluster.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        Elasticsearch 集群（cluster）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="elasticsearch/indexandtype.html">
+            
+                
+                    <a href="../elasticsearch/indexandtype.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        索引与类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="elasticsearch/document.html">
+            
+                
+                    <a href="../elasticsearch/document.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        文档
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="elasticsearch/ik.html">
+            
+                
+                    <a href="../elasticsearch/ik.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        IK中文分析器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="elasticsearch/logstash.html">
+            
+                
+                    <a href="../elasticsearch/logstash.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        Logstash导入数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="elasticsearch/select.html">
+            
+                
+                    <a href="../elasticsearch/select.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="elasticsearch/implement.html">
+            
+                
+                    <a href="../elasticsearch/implement.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        头条全文检索实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="elasticsearch/suggest.html">
+            
+                
+                    <a href="../elasticsearch/suggest.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        suggest查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.10" data-path="elasticsearch/suggestimplement.html">
+            
+                
+                    <a href="../elasticsearch/suggestimplement.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.10.</b>
+                        
+                        头条suggest查询实现
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="test.html">
+            
+                
+                    <a href="../test.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        单元测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="online.html">
+            
+                
+                    <a href="../online.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        部署相关
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="online/gunicorn.html">
+            
+                
+                    <a href="../online/gunicorn.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        Gunicorn
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="online/supervisor.html">
+            
+                
+                    <a href="../online/supervisor.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        Supervisor
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >django项目</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x6982;&#x5FF5;&#x4E0E;&#x96C6;&#x7FA4;">&#x7D22;&#x5F15;&#x4E0E;&#x96C6;&#x7FA4; </h1>
+<h2 id="&#x6982;&#x5FF5;">&#x7D22;&#x5F15; </h2>
+<p>&#x5B58;&#x50A8;&#x6570;&#x636E;&#x5230; Elasticsearch &#x7684;&#x884C;&#x4E3A;&#x53EB;&#x505A;<em>&#x7D22;&#x5F15;</em>&#xFF08;indexing&#xFF09;</p>
+<p>&#x5173;&#x4E8E;&#x6570;&#x636E;&#x7684;&#x6982;&#x5FF5;</p>
+<pre><code>Relational DB -&gt; Databases &#x6570;&#x636E;&#x5E93; -&gt; Tables &#x8868; -&gt; Rows &#x884C; -&gt; Columns &#x5217;
+Elasticsearch -&gt; Indices &#x7D22;&#x5F15;&#x5E93; -&gt; Types &#x7C7B;&#x578B; -&gt; Documents &#x6587;&#x6863; -&gt; Fields &#x5B57;&#x6BB5;/&#x5C5E;&#x6027;
+</code></pre><p>&#x4E00;&#x4E2A; Elasticsearch &#x96C6;&#x7FA4;&#x53EF;&#x4EE5; &#x5305;&#x542B;&#x591A;&#x4E2A;<em>&#x7D22;&#x5F15;</em>&#xFF08;indices &#x6570;&#x636E;&#x5E93;&#xFF09;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x6BCF;&#x4E2A;&#x7D22;&#x5F15;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x591A;&#x4E2A;<em>&#x7C7B;&#x578B;</em>&#xFF08;type &#x8868;&#xFF09; &#x3002; &#x8FD9;&#x4E9B;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x5B58;&#x50A8;&#x7740;&#x591A;&#x4E2A;<em>&#x6587;&#x6863;</em>&#xFF08;document &#x6570;&#x636E;&#x884C;&#xFF09; &#xFF0C;&#x6BCF;&#x4E2A;&#x6587;&#x6863;&#x53C8;&#x6709; &#x591A;&#x4E2A;<em>&#x5C5E;&#x6027;</em>&#xFF08;field &#x5217;&#xFF09;&#x3002;</p>
+<h2 id="elasticsearch-&#x96C6;&#x7FA4;&#xFF08;cluster&#xFF09;">Elasticsearch &#x96C6;&#x7FA4;&#xFF08;cluster&#xFF09; </h2>
+<p>Elasticsearch &#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x5C4F;&#x853D;&#x4E86;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x7684;&#x590D;&#x6742;&#x6027;&#x3002;&#x8FD9;&#x91CC;&#x5217;&#x4E3E;&#x4E86;&#x4E00;&#x4E9B;&#x5728;&#x540E;&#x53F0;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li>&#x5206;&#x914D;&#x6587;&#x6863;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x5BB9;&#x5668; &#x6216;
+<em>&#x5206;&#x7247;</em>
+&#x4E2D;&#xFF0C;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x50A8;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x4E2D;</li>
+<li>&#x6309;&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x6765;&#x5747;&#x8861;&#x5206;&#x914D;&#x8FD9;&#x4E9B;&#x5206;&#x7247;&#xFF0C;&#x4ECE;&#x800C;&#x5BF9;&#x7D22;&#x5F15;&#x548C;&#x641C;&#x7D22;&#x8FC7;&#x7A0B;&#x8FDB;&#x884C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;</li>
+<li>&#x590D;&#x5236;&#x6BCF;&#x4E2A;&#x5206;&#x7247;&#x4EE5;&#x652F;&#x6301;&#x6570;&#x636E;&#x5197;&#x4F59;&#xFF0C;&#x4ECE;&#x800C;&#x9632;&#x6B62;&#x786C;&#x4EF6;&#x6545;&#x969C;&#x5BFC;&#x81F4;&#x7684;&#x6570;&#x636E;&#x4E22;&#x5931;</li>
+<li>&#x5C06;&#x96C6;&#x7FA4;&#x4E2D;&#x4EFB;&#x4E00;&#x8282;&#x70B9;&#x7684;&#x8BF7;&#x6C42;&#x8DEF;&#x7531;&#x5230;&#x5B58;&#x6709;&#x76F8;&#x5173;&#x6570;&#x636E;&#x7684;&#x8282;&#x70B9;</li>
+<li>&#x96C6;&#x7FA4;&#x6269;&#x5BB9;&#x65F6;&#x65E0;&#x7F1D;&#x6574;&#x5408;&#x65B0;&#x8282;&#x70B9;&#xFF0C;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5206;&#x7247;&#x4EE5;&#x4FBF;&#x4ECE;&#x79BB;&#x7FA4;&#x8282;&#x70B9;&#x6062;&#x590D;</li>
+</ul>
+<p><img src="../assets/elas_cluster.png" alt="" title="elas\_cluster"></p>
+<h4 id="&#x8282;&#x70B9;&#xFF08;node&#xFF09;">&#x8282;&#x70B9;&#xFF08;node&#xFF09; </h4>
+<p><strong>&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x4E2D;&#x7684; Elasticsearch &#x5B9E;&#x4F8B;&#x79F0;&#x4E3A;&#x4E00;&#x4E2A; &#x8282;&#x70B9;</strong>&#xFF0C;&#x800C;&#x96C6;&#x7FA4;&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x62E5;&#x6709;&#x76F8;&#x540C;<code>cluster.name</code>&#x914D;&#x7F6E;&#x7684;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#xFF0C; &#x5B83;&#x4EEC;&#x5171;&#x540C;&#x627F;&#x62C5;&#x6570;&#x636E;&#x548C;&#x8D1F;&#x8F7D;&#x7684;&#x538B;&#x529B;&#x3002;&#x5F53;&#x6709;&#x8282;&#x70B9;&#x52A0;&#x5165;&#x96C6;&#x7FA4;&#x4E2D;&#x6216;&#x8005;&#x4ECE;&#x96C6;&#x7FA4;&#x4E2D;&#x79FB;&#x9664;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x96C6;&#x7FA4;&#x5C06;&#x4F1A;&#x91CD;&#x65B0;&#x5E73;&#x5747;&#x5206;&#x5E03;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x88AB;&#x9009;&#x4E3E;&#x6210;&#x4E3A;<em><strong>&#x4E3B;</strong></em><strong>&#x8282;&#x70B9;&#xFF08;master&#xFF09;&#x65F6;&#xFF0C; &#x5B83;&#x5C06;&#x8D1F;&#x8D23;&#x7BA1;&#x7406;&#x96C6;&#x7FA4;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6240;&#x6709;&#x53D8;&#x66F4;</strong>&#xFF0C;&#x4F8B;&#x5982;&#x589E;&#x52A0;&#x3001;&#x5220;&#x9664;&#x7D22;&#x5F15;&#xFF0C;&#x6216;&#x8005;&#x589E;&#x52A0;&#x3001;&#x5220;&#x9664;&#x8282;&#x70B9;&#x7B49;&#x3002; &#x800C;<strong>&#x4E3B;&#x8282;&#x70B9;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x6D89;&#x53CA;&#x5230;&#x6587;&#x6863;&#x7EA7;&#x522B;&#x7684;&#x53D8;&#x66F4;&#x548C;&#x641C;&#x7D22;&#x7B49;&#x64CD;&#x4F5C;</strong>&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x96C6;&#x7FA4;&#x53EA;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5373;&#x4F7F;&#x6D41;&#x91CF;&#x7684;&#x589E;&#x52A0;&#x5B83;&#x4E5F;&#x4E0D;&#x4F1A;&#x6210;&#x4E3A;&#x74F6;&#x9888;&#x3002; &#x4EFB;&#x4F55;&#x8282;&#x70B9;&#x90FD;&#x53EF;&#x4EE5;&#x6210;&#x4E3A;&#x4E3B;&#x8282;&#x70B9;&#x3002;&#x6211;&#x4EEC;&#x7684;&#x793A;&#x4F8B;&#x96C6;&#x7FA4;&#x5C31;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x540C;&#x65F6;&#x4E5F;&#x6210;&#x4E3A;&#x4E86;&#x4E3B;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x4F5C;&#x4E3A;&#x7528;&#x6237;&#xFF0C;<strong>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x5230;</strong><em><strong>&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x8282;&#x70B9;</strong></em><strong>&#xFF0C;&#x5305;&#x62EC;&#x4E3B;&#x8282;&#x70B9;</strong>&#x3002; &#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x77E5;&#x9053;&#x4EFB;&#x610F;&#x6587;&#x6863;&#x6240;&#x5904;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x5C06;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x76F4;&#x63A5;&#x8F6C;&#x53D1;&#x5230;&#x5B58;&#x50A8;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x6587;&#x6863;&#x7684;&#x8282;&#x70B9;&#x3002; &#x65E0;&#x8BBA;&#x6211;&#x4EEC;&#x5C06;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x5230;&#x54EA;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5B83;&#x90FD;&#x80FD;&#x8D1F;&#x8D23;&#x4ECE;&#x5404;&#x4E2A;&#x5305;&#x542B;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x6587;&#x6863;&#x7684;&#x8282;&#x70B9;&#x6536;&#x96C6;&#x56DE;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x5C06;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x7D66;&#x5BA2;&#x6237;&#x7AEF;&#x3002; Elasticsearch &#x5BF9;&#x8FD9;&#x4E00;&#x5207;&#x7684;&#x7BA1;&#x7406;&#x90FD;&#x662F;&#x900F;&#x660E;&#x7684;&#x3002;</p>
+<h4 id="&#x5206;&#x7247;&#xFF08;shard&#xFF09;">&#x5206;&#x7247;&#xFF08;shard&#xFF09; </h4>
+<p>&#x4E00;&#x4E2A;<em>&#x5206;&#x7247;</em>&#x662F;&#x4E00;&#x4E2A;&#x5E95;&#x5C42;&#x7684;<em>&#x5DE5;&#x4F5C;&#x5355;&#x5143;</em>&#xFF0C;&#x5B83;&#x4EC5;&#x4FDD;&#x5B58;&#x4E86; &#x5168;&#x90E8;&#x6570;&#x636E;&#x4E2D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x7D22;&#x5F15;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x7269;&#x7406;<em>&#x5206;&#x7247;</em>&#x7684;<em>&#x903B;&#x8F91;&#x547D;&#x540D;&#x7A7A;&#x95F4;</em>&#x3002;</p>
+<p>&#x6587;&#x6863;&#x88AB;&#x5B58;&#x50A8;&#x548C;&#x7D22;&#x5F15;&#x5230;&#x5206;&#x7247;&#x5185;&#xFF0C;&#x4F46;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x76F4;&#x63A5;&#x4E0E;&#x7D22;&#x5F15;&#x800C;&#x4E0D;&#x662F;&#x4E0E;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x3002;</p>
+<p>Elasticsearch &#x662F;&#x5229;&#x7528;&#x5206;&#x7247;&#x5C06;&#x6570;&#x636E;&#x5206;&#x53D1;&#x5230;&#x96C6;&#x7FA4;&#x5185;&#x5404;&#x5904;&#x7684;&#x3002;&#x5206;&#x7247;&#x662F;&#x6570;&#x636E;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x6587;&#x6863;&#x4FDD;&#x5B58;&#x5728;&#x5206;&#x7247;&#x5185;&#xFF0C;&#x5206;&#x7247;&#x53C8;&#x88AB;&#x5206;&#x914D;&#x5230;&#x96C6;&#x7FA4;&#x5185;&#x7684;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x91CC;&#x3002; &#x5F53;&#x4F60;&#x7684;&#x96C6;&#x7FA4;&#x89C4;&#x6A21;&#x6269;&#x5927;&#x6216;&#x8005;&#x7F29;&#x5C0F;&#x65F6;&#xFF0C; Elasticsearch &#x4F1A;&#x81EA;&#x52A8;&#x7684;&#x5728;&#x5404;&#x8282;&#x70B9;&#x4E2D;&#x8FC1;&#x79FB;&#x5206;&#x7247;&#xFF0C;&#x4F7F;&#x5F97;&#x6570;&#x636E;&#x4ECD;&#x7136;&#x5747;&#x5300;&#x5206;&#x5E03;&#x5728;&#x96C6;&#x7FA4;&#x91CC;&#x3002;</p>
+<h5 id="&#x4E3B;&#x5206;&#x7247;&#xFF08;primary-shard&#xFF09;">&#x4E3B;&#x5206;&#x7247;&#xFF08;primary shard&#xFF09; </h5>
+<p>&#x7D22;&#x5F15;&#x5185;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#x90FD;&#x5F52;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#xFF0C;&#x6240;&#x4EE5;&#x4E3B;&#x5206;&#x7247;&#x7684;&#x6570;&#x76EE;&#x51B3;&#x5B9A;&#x7740;&#x7D22;&#x5F15;&#x80FD;&#x591F;&#x4FDD;&#x5B58;&#x7684;&#x6700;&#x5927;&#x6570;&#x636E;&#x91CF;&#x3002;</p>
+<h5 id="&#x590D;&#x5236;&#x5206;&#x7247;&#xFF08;&#x526F;&#x5206;&#x7247;-replica-shard">&#x590D;&#x5236;&#x5206;&#x7247;&#xFF08;&#x526F;&#x5206;&#x7247; replica shard) </h5>
+<p>&#x4E00;&#x4E2A;&#x526F;&#x672C;&#x5206;&#x7247;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x7684;&#x62F7;&#x8D1D;&#x3002; &#x526F;&#x672C;&#x5206;&#x7247;&#x4F5C;&#x4E3A;&#x786C;&#x4EF6;&#x6545;&#x969C;&#x65F6;&#x4FDD;&#x62A4;&#x6570;&#x636E;&#x4E0D;&#x4E22;&#x5931;&#x7684;&#x5197;&#x4F59;&#x5907;&#x4EFD;&#xFF0C;&#x5E76;&#x4E3A;&#x641C;&#x7D22;&#x548C;&#x8FD4;&#x56DE;&#x6587;&#x6863;&#x7B49;&#x8BFB;&#x64CD;&#x4F5C;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;</p>
+<p><strong>&#x5728;&#x7D22;&#x5F15;&#x5EFA;&#x7ACB;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#x4E86;&#x4E3B;&#x5206;&#x7247;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x526F;&#x672C;&#x5206;&#x7247;&#x6570;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4FEE;&#x6539;.</strong></p>
+<p>&#x521D;&#x59CB;&#x8BBE;&#x7F6E;&#x7D22;&#x5F15;&#x7684;&#x5206;&#x7247;&#x65B9;&#x6CD5;</p>
+<pre><code>PUT /blogs
+{
+   &quot;settings&quot; : {
+      &quot;number_of_shards&quot; : 3,
+      &quot;number_of_replicas&quot; : 1
+   }
+}
+</code></pre><ul>
+<li><p>number_of_shards</p>
+<p>&#x6BCF;&#x4E2A;&#x7D22;&#x5F15;&#x7684;&#x4E3B;&#x5206;&#x7247;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x662F;<code>5</code>&#x3002;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x5728;&#x7D22;&#x5F15;&#x521B;&#x5EFA;&#x540E;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x3002;</p>
+</li>
+<li><p>number_of_replicas</p>
+<p>&#x6BCF;&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x7684;&#x526F;&#x672C;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x662F;<code>1</code>&#x3002;&#x5BF9;&#x4E8E;&#x6D3B;&#x52A8;&#x7684;&#x7D22;&#x5F15;&#x5E93;&#xFF0C;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4FEE;&#x6539;&#x3002;</p>
+</li>
+</ul>
+<p>2 &#x4E2A;&#x8282;&#x70B9;</p>
+<p><img src="../assets/elas_cluster.png" alt="" title="elas\_cluster"></p>
+<p>3 &#x4E2A;&#x8282;&#x70B9;</p>
+<p><img src="../assets/elas_cluster_node3.png" alt="" title="elas\_cluster\_node3"></p>
+<p>&#x5206;&#x7247;&#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5B8C;&#x6574;&#x7684;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#xFF0C;&#x5B83;&#x62E5;&#x6709;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x8D44;&#x6E90;&#x7684;&#x80FD;&#x529B;&#x3002; &#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x62E5;&#x6709;6&#x4E2A;&#x5206;&#x7247;&#xFF08;3&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x548C;3&#x4E2A;&#x526F;&#x672C;&#x5206;&#x7247;&#xFF09;&#x7684;&#x7D22;&#x5F15;&#x53EF;&#x4EE5;&#x6700;&#x5927;&#x6269;&#x5BB9;&#x5230;6&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5206;&#x7247;&#xFF0C;&#x5E76;&#x4E14;&#x6BCF;&#x4E2A;&#x5206;&#x7247;&#x62E5;&#x6709;&#x6240;&#x5728;&#x8282;&#x70B9;&#x7684;&#x5168;&#x90E8;&#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x4FEE;&#x6539;&#x590D;&#x5236;&#x5206;&#x7247;&#x6570;&#x76EE;&#x7684;&#x65B9;&#x6CD5;</p>
+<pre><code>PUT /blogs/_settings
+{
+   &quot;number_of_replicas&quot; : 2
+}
+</code></pre><p>&#x62E5;&#x6709;&#x8D8A;&#x591A;&#x7684;&#x526F;&#x672C;&#x5206;&#x7247;&#x65F6;&#xFF0C;&#x4E5F;&#x5C06;&#x62E5;&#x6709;&#x8D8A;&#x9AD8;&#x7684;&#x541E;&#x5410;&#x91CF;&#x3002;</p>
+<p><img src="../assets/elas_0205.png" alt="" title="elas\_0205"></p>
+<h4 id="&#x6545;&#x969C;&#x8F6C;&#x79FB;-failover">&#x6545;&#x969C;&#x8F6C;&#x79FB; failover </h4>
+<p><img src="../assets/elas_0206.png" alt="" title="elas\_0206"></p>
+<ul>
+<li>&#x9009;&#x4E3E;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;</li>
+<li>&#x63D0;&#x5347;&#x590D;&#x5236;&#x5206;&#x7247;&#x4E3A;&#x4E3B;&#x5206;&#x7247;</li>
+</ul>
+<h4 id="&#x67E5;&#x770B;&#x96C6;&#x7FA4;&#x5065;&#x5EB7;&#x72B6;&#x6001;">&#x67E5;&#x770B;&#x96C6;&#x7FA4;&#x5065;&#x5EB7;&#x72B6;&#x6001; </h4>
+<pre><code>GET /_cluster/health
+
+{
+   &quot;cluster_name&quot;:          &quot;elasticsearch&quot;,
+   &quot;status&quot;:                &quot;green&quot;, 
+   &quot;timed_out&quot;:             false,
+   &quot;number_of_nodes&quot;:       1,
+   &quot;number_of_data_nodes&quot;:  1,
+   &quot;active_primary_shards&quot;: 0,
+   &quot;active_shards&quot;:         0,
+   &quot;relocating_shards&quot;:     0,
+   &quot;initializing_shards&quot;:   0,
+   &quot;unassigned_shards&quot;:     0
+}
+</code></pre><p><code>status</code>&#x5B57;&#x6BB5;&#x6307;&#x793A;&#x7740;&#x5F53;&#x524D;&#x96C6;&#x7FA4;&#x5728;&#x603B;&#x4F53;&#x4E0A;&#x662F;&#x5426;&#x5DE5;&#x4F5C;&#x6B63;&#x5E38;&#x3002;&#x5B83;&#x7684;&#x4E09;&#x79CD;&#x989C;&#x8272;&#x542B;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><p><code>green</code></p>
+<p>&#x6240;&#x6709;&#x7684;&#x4E3B;&#x5206;&#x7247;&#x548C;&#x526F;&#x672C;&#x5206;&#x7247;&#x90FD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</p>
+</li>
+<li><p><code>yellow</code></p>
+<p>&#x6240;&#x6709;&#x7684;&#x4E3B;&#x5206;&#x7247;&#x90FD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;&#x526F;&#x672C;&#x5206;&#x7247;&#x90FD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</p>
+</li>
+<li><p><code>red</code></p>
+<p>&#x6709;&#x4E3B;&#x5206;&#x7247;&#x6CA1;&#x80FD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</p>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../elasticsearch/intro.html" class="navigation navigation-prev " aria-label="Previous page: 简介与原理"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../elasticsearch/indexandtype.html" class="navigation navigation-next " aria-label="Next page: 索引与类型"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontsettings":{"family":"sans","size":2,"theme":"white"},"toggle-chapters":{},"splitter":{},"emphasize":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book django项目 -->
+</html>

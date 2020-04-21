@@ -1,0 +1,836 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    <!-- Start book django项目 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>定义模型类 | django项目</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../db/operation.html" />
+    
+    
+    <link rel="prev" href="../db/sqlalchemy.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="7.2"
+        data-chapter-title="定义模型类"
+        data-filepath="db/field.md"
+        data-basepath=".."
+        data-revision="Wed Nov 06 2019 11:37:23 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        课程简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="intro.html">
+            
+                
+                    <a href="../intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Flask介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="project.html">
+            
+                
+                    <a href="../project.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        工程搭建
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="project/env.html">
+            
+                
+                    <a href="../project/env.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        环境安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="project/helloworld.html">
+            
+                
+                    <a href="../project/helloworld.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        HelloWorld程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="project/config.html">
+            
+                
+                    <a href="../project/config.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        相关配置参数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="project/run.html">
+            
+                
+                    <a href="../project/run.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        服务器启动方式
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="router.html">
+            
+                
+                    <a href="../router.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        路由与蓝图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="router/router.html">
+            
+                
+                    <a href="../router/router.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        路由
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="router/blueprint.html">
+            
+                
+                    <a href="../router/blueprint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        蓝图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="requestresponse.html">
+            
+                
+                    <a href="../requestresponse.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        请求与响应
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="requestresponse/request.html">
+            
+                
+                    <a href="../requestresponse/request.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="requestresponse/response.html">
+            
+                
+                    <a href="../requestresponse/response.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        响应
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="requestresponse/status.html">
+            
+                
+                    <a href="../requestresponse/status.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Cookie与Session
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="requestresponse/status/cookie.html">
+            
+                
+                    <a href="../requestresponse/status/cookie.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.1.</b>
+                        
+                        cookie
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="requestresponse/status/session.html">
+            
+                
+                    <a href="../requestresponse/status/session.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.2.</b>
+                        
+                        session
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="hook.html">
+            
+                
+                    <a href="../hook.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        请求钩子与上下文
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="hook/exception.html">
+            
+                
+                    <a href="../hook/exception.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        异常处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="hook/hook.html">
+            
+                
+                    <a href="../hook/hook.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        请求钩子
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="hook/context.html">
+            
+                
+                    <a href="../hook/context.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        上下文
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="restful.html">
+            
+                
+                    <a href="../restful.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Flask-RESTful
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="restful/helloworld.html">
+            
+                
+                    <a href="../restful/helloworld.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        快速入门
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="restful/view.html">
+            
+                
+                    <a href="../restful/view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="restful/request.html">
+            
+                
+                    <a href="../restful/request.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="restful/response.html">
+            
+                
+                    <a href="../restful/response.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        响应
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="db.html">
+            
+                
+                    <a href="../db.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        数据库
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="db/sqlalchemy.html">
+            
+                
+                    <a href="../db/sqlalchemy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        SQLAlchemy安装及设置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="7.2" data-path="db/field.html">
+            
+                
+                    <a href="../db/field.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        定义模型类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="db/operation.html">
+            
+                
+                    <a href="../db/operation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        数据库基本操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="db/relationship.html">
+            
+                
+                    <a href="../db/relationship.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        关联查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="db/migrate.html">
+            
+                
+                    <a href="../db/migrate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        数据库迁移
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="db/many.html">
+            
+                
+                    <a href="../db/many.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        多对多案例分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >django项目</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h3 id="&#x5728;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x7C7B;">&#x5728;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x7C7B;</h3>
+<pre><code>from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+
+app = Flask(__name__)
+
+#&#x8BBE;&#x7F6E;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#x7684;URL
+app.config[&apos;SQLALCHEMY_DATABASE_URI&apos;] = &apos;mysql://root:mysql@127.0.0.1:3306/test&apos;
+
+app.config[&apos;SQLALCHEMY_TRACK_MODIFICATIONS&apos;] = True
+#&#x67E5;&#x8BE2;&#x65F6;&#x4F1A;&#x663E;&#x793A;&#x539F;&#x59CB;SQL&#x8BED;&#x53E5;
+app.config[&apos;SQLALCHEMY_ECHO&apos;] = True
+db = SQLAlchemy(app)
+
+#&#x5B9A;&#x4E49;&#x6A21;&#x578B;
+class BookInfo(db.Model):
+    #&#x8BBE;&#x7F6E;&#x8868;&#x540D;
+    __tablename__ = &apos;bookinfo&apos;
+    #&#x8BBE;&#x7F6E;&#x4E3A;&#x4E3B;&#x952E;&#x4E4B;&#x540E;&#xFF0C;&#x81EA;&#x52A8;&#x81EA;&#x589E;&#x957F;
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(20),unique=True,nullable=False)
+    pub_date = db.Column(db.Date,nullable=True)
+    readcount = db.Column(db.Integer,default=1)
+    commentcount = db.Column(db.Integer,default=1)
+    is_delete = db.Column(db.Boolean,default=False)
+
+
+    def __repr__(self):
+        return self.name
+
+class PeopleInfo(db.Model):
+    __tablename__ = &apos;peopleinfo&apos;
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(20),unique=True)
+    password = db.Column(db.String(20),nullable=False)
+    email = db.Column(db.String(50),nullable=True)
+    #&#x8BBE;&#x7F6E;&#x5916;&#x952E;
+    book_id = db.Column(db.Integer,db.ForeignKey(&apos;bookinfo.id&apos;))
+
+    def __repr__(self):
+        return self.name
+
+if __name__ == &apos;__main__&apos;:
+    app.run(debug=True)
+</code></pre><h3 id=""> </h3>
+<h2 id="&#x5E38;&#x7528;&#x7684;sqlalchemy&#x5B57;&#x6BB5;&#x7C7B;&#x578B;">&#x5E38;&#x7528;&#x7684;SQLAlchemy&#x5B57;&#x6BB5;&#x7C7B;&#x578B;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x7C7B;&#x578B;&#x540D;</th>
+<th style="text-align:left">python&#x4E2D;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Integer</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x666E;&#x901A;&#x6574;&#x6570;&#xFF0C;&#x4E00;&#x822C;&#x662F;32&#x4F4D;</td>
+</tr>
+<tr>
+<td style="text-align:left">SmallInteger</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x53D6;&#x503C;&#x8303;&#x56F4;&#x5C0F;&#x7684;&#x6574;&#x6570;&#xFF0C;&#x4E00;&#x822C;&#x662F;16&#x4F4D;</td>
+</tr>
+<tr>
+<td style="text-align:left">BigInteger</td>
+<td style="text-align:left">int&#x6216;long</td>
+<td style="text-align:left">&#x4E0D;&#x9650;&#x5236;&#x7CBE;&#x5EA6;&#x7684;&#x6574;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">&#x6D6E;&#x70B9;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:left">Numeric</td>
+<td style="text-align:left">decimal.Decimal</td>
+<td style="text-align:left">&#x666E;&#x901A;&#x6574;&#x6570;&#xFF0C;&#x4E00;&#x822C;&#x662F;32&#x4F4D;</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left">str</td>
+<td style="text-align:left">&#x53D8;&#x957F;&#x5B57;&#x7B26;&#x4E32;</td>
+</tr>
+<tr>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">str</td>
+<td style="text-align:left">&#x53D8;&#x957F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5BF9;&#x8F83;&#x957F;&#x6216;&#x4E0D;&#x9650;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x505A;&#x4E86;&#x4F18;&#x5316;</td>
+</tr>
+<tr>
+<td style="text-align:left">Unicode</td>
+<td style="text-align:left">unicode</td>
+<td style="text-align:left">&#x53D8;&#x957F;Unicode&#x5B57;&#x7B26;&#x4E32;</td>
+</tr>
+<tr>
+<td style="text-align:left">UnicodeText</td>
+<td style="text-align:left">unicode</td>
+<td style="text-align:left">&#x53D8;&#x957F;Unicode&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5BF9;&#x8F83;&#x957F;&#x6216;&#x4E0D;&#x9650;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x505A;&#x4E86;&#x4F18;&#x5316;</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">bool</td>
+<td style="text-align:left">&#x5E03;&#x5C14;&#x503C;</td>
+</tr>
+<tr>
+<td style="text-align:left">Date</td>
+<td style="text-align:left">datetime.date</td>
+<td style="text-align:left">&#x65F6;&#x95F4;</td>
+</tr>
+<tr>
+<td style="text-align:left">Time</td>
+<td style="text-align:left">datetime.datetime</td>
+<td style="text-align:left">&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;</td>
+</tr>
+<tr>
+<td style="text-align:left">LargeBinary</td>
+<td style="text-align:left">str</td>
+<td style="text-align:left">&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x5E38;&#x7528;&#x7684;sqlalchemy&#x5217;&#x9009;&#x9879;">&#x5E38;&#x7528;&#x7684;SQLAlchemy&#x5217;&#x9009;&#x9879;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x9009;&#x9879;&#x540D;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">primary_key</td>
+<td style="text-align:left">&#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x4EE3;&#x8868;&#x8868;&#x7684;&#x4E3B;&#x952E;</td>
+</tr>
+<tr>
+<td style="text-align:left">unique</td>
+<td style="text-align:left">&#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x4EE3;&#x8868;&#x8FD9;&#x5217;&#x4E0D;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x7684;&#x503C;</td>
+</tr>
+<tr>
+<td style="text-align:left">index</td>
+<td style="text-align:left">&#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x4E3A;&#x8FD9;&#x5217;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#xFF0C;&#x63D0;&#x9AD8;&#x67E5;&#x8BE2;&#x6548;&#x7387;</td>
+</tr>
+<tr>
+<td style="text-align:left">nullable</td>
+<td style="text-align:left">&#x5982;&#x679C;&#x4E3A;True&#xFF0C;&#x5141;&#x8BB8;&#x6709;&#x7A7A;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x4E3A;False&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x6709;&#x7A7A;&#x503C;</td>
+</tr>
+<tr>
+<td style="text-align:left">default</td>
+<td style="text-align:left">&#x4E3A;&#x8FD9;&#x5217;&#x5B9A;&#x4E49;&#x9ED8;&#x8BA4;&#x503C;</td>
+</tr>
+</tbody>
+</table>
+<h2 id=""> </h2>
+<h3 id=""> </h3>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../db/sqlalchemy.html" class="navigation navigation-prev " aria-label="Previous page: SQLAlchemy安装及设置"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../db/operation.html" class="navigation navigation-next " aria-label="Next page: 数据库基本操作"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontsettings":{"family":"sans","size":2,"theme":"white"},"toggle-chapters":{},"splitter":{},"emphasize":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book django项目 -->
+</html>
